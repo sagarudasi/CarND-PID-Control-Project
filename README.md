@@ -1,7 +1,31 @@
 # CarND-Controls-PID
 Self-Driving Car Engineer Nanodegree Program
 
----
+## PID Explanation 
+
+PID (Proportional-Integral-Derivative) is a widely used tool in control systems that allows the system to use feedback and correct itself to achieve desired result.
+
+P (Proportional) multiplier to the error and correction allows the system to quickly adjust itself to the desired point. However, the downside is that the multiplier is fixed and hence it may overshoot even after acheiving the desired point. 
+
+D (Differential) multiplier to the error and correction allows the system to tackle the problem occured because of Proportional multiplier. Basically it calculates the derivate at every point and accordingly increases or decreases the impact of control preventing the system to overshoot.
+
+I (Integral) multiplier to the accumulated error and correction allows the system to automatically consider if its not converging. So may be because of incorrect roll/pitch/yaw of sensor placement, the system may always have some error. Here we try the reduce the area between current set of points and desired set of points over time.
+
+## PID Parameter Tuning
+
+There are multiple methods PID parameters can be tuned to obtain desired results. I have tried to find out the parameters by manual (trial and error) method for better understanding of each parameter and its impact.
+
+Initally, I took the values from video lectures for all P, I and D. I kept I and D fixed and tried adjusting the P parameter. If P is too large, the car overshoots and tries to correct itself having a huge impact on the comfort of the passenger and it moves in zig-zag line.
+
+If P is less then the system takes time to converge to the desired points but the steering is comparatively smooth. So I decreased the value of P to 0.12
+
+Next I tried to optimize the value of D. D must be sufficiently large to avoid the car from overshooting from the desired points. So I increased the value to 5.
+
+For Integral co-efficient, I decreased the value so similar to the Proportional value, the accumalated error will be minimized gradually. Value of 0.0002 seemed to work just fine.
+
+Please find the attached output video. 
+
+# Original Readme
 
 ## Dependencies
 
